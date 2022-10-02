@@ -49,7 +49,7 @@ async function manager() {
     // ADD newManager to employeeList array
     employeeList.push(newManager);
     
-    //console.log(employeeList);
+    console.log(employeeList);
     employee();
 }
     
@@ -85,7 +85,7 @@ async function engineer() {
     //ADD newEngineer to employeeList array
     employeeList.push(newEngineer);
 
-    //console.log(answers);
+    console.log(employeeList);
     employee();
 }
     
@@ -121,7 +121,7 @@ async function intern() {
     //ADD newIntern to employeeList array
     employeeList.push(newIntern);
 
-    //console.log(answers);
+    console.log(employeeList);
     employee();
 }
    
@@ -160,3 +160,4 @@ async function employee() {
 }
 
 manager();
+
