@@ -1,3 +1,7 @@
+const managerList = [];
+const engineerList = [];
+const internList = [];
+
 // Create a function of the final HTML output
     // Master HTML template
 
@@ -12,6 +16,21 @@
 
 // Create a function that takes the employeeList array and split by the .getRole method
 const employeesByRole = employeeList => {
+    employeeList.forEach(element => {
+        if( element.getRole() === "Manager" ) {
+            managerList.push
+
+           // else if
+           // engineerList.push
+           // else if
+           // internList.push
+           // else error 
+        }
+        
+    });
+
+    employeeList.at(0).getRole();
+    
 
 // }
 

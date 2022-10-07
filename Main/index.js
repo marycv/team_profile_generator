@@ -50,6 +50,7 @@ async function manager() {
     employeeList.push(newManager);
     
     console.log(employeeList);
+
     employee();
 }
     
@@ -147,17 +148,21 @@ async function employee() {
     } else if(answers.teamMember === "Intern") {
         intern();
     } else {
-        try {
-            // Generate the HTML and write it to a file
-            const pageTemplate = teamHTML(employeeList);
+        
+        // try {
+        //     // Generate the HTML and write it to a file
+        //     const pageTemplate = teamHTML(employeeList);
 
-            await writeFile("team.html", pageTemplate);
-            console.log("Success!");
-        } catch(err) {
-            console.error(err)
-        }
+        //     await writeFile("team.html", pageTemplate);
+        //     console.log("Success!");
+        // } catch(err) {
+        //     console.error(err)
+        // }
     }
 }
 
+
 manager();
+
+
 
