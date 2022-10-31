@@ -1,44 +1,65 @@
-const managerList = [];
-const engineerList = [];
-const internList = [];
+const managerList = []
+const engineerList = []
+const internList = []
 
 // Create a function that takes the employeeList array, split by the .getRole method
-const employeesByRole = employeeList => {
-    employeeList.forEach(element => {
-        if(element.getRole() === "Manager") {
-            // Push to empty managerList array
-            managerList.push(element);
-        } else if(element.getRole() === "Engineer") {
-            // Push to empty engineerList array
-            engineerList.push(element);
-        } else {
-            // Push to internList array
-            internList.push(element);
-        }
-    })
-    const test = managerList.map(managerCard);
-
-    console.log(test);
-    console.log(managerList);
+const employeesByRole = (employeeList) => {
+  employeeList.forEach((element) => {
+    if (element.getRole() === 'Manager') {
+      // Push to empty managerList array
+      managerList.push(element)
+    } else if (element.getRole() === 'Engineer') {
+      // Push to empty engineerList array
+      engineerList.push(element)
+    } else {
+      // Push to internList array
+      internList.push(element)
+    }
+  });
 };
 
-// Create a function that generates an HTML card for Manager
-const managerCard = (manager) => {
-    return `
-    ${manager.name}
-    ${manager.id}
-    ${manager.email}
-    ${manager.officeNumber}
-    `
-
-// const managerCard = managerList.map( )
+// Create a function to make the card HTML
+const makeCard = (data) => {
+  return `
+    <div class="card col-md-3 m-2 bg-white text-black">
+        <div class="card-body">
+            <h3 class="card-title py-2">${data.name}</h3>
+            <ul class="list-group">
+                <li class="list-group-item">ID-${data.id}</li>
+                <li class="list-group-item">${data.email}</li>
+                <li class="list-group-item">${() => {
+                    if (data.officeNumber) {
+                        return data.officeNumber
+                    } else if (data.github) {
+                        return data.github
+                    } else {
+                        return data.school
+                    }
+                }}
+                </li>
+            </ul>
+        </div>
+    </div>`
 };
 
-// Create a function of the final HTML output
-    // Master HTML template
+// Create a function to get card data from managerList, engineerList, and internList at push through makeCard function
+const getCards = () => {
+  var string = ''
+  managerList.forEach((employee) => (string += makeCard(employee)))
+//   console.log('string after managerList')
+//   console.log(string)
+  engineerList.forEach((employee) => (string += makeCard(employee)))
+//   console.log('String after engineer')
+//   console.log(string)
+  internList.forEach((employee) => (string += makeCard(employee)))
+//   console.log('String after intern')
+//   console.log(string)
+  return string
+};
+
 const teamHTML = (employeeList) => {
-    employeesByRole(employeeList);
-     return `
+  employeesByRole(employeeList)
+  return `
      <!DOCTYPE html>
      <html lang="en-US">
         <head>
@@ -51,31 +72,11 @@ const teamHTML = (employeeList) => {
             <!-- Script tag for JavaScript Bundle -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
             
-            <!-- Manager Card -->
-            <div class="card col-md-3 m-2 bg-white text-black">
-                <div class="card-body">
-                    <h3 class="card-title py-2">${managerCard(data.name)}</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">ID-${managerCard(data.id)}</li>
-                        <li class="list-group-item">${managerCard(data.email)}</li>
-                        <li class="list-group-item">${managerCard(data.officeNumber)}</li>
-                    </ul>
-                </div>
-            </div>
-        
+            <!-- Call the getCards function -->
+            ${getCards()}        
         </body>
     </html>
      `
 };
 
-
-
-// Create a function that generates an HTML card for Engineer
-    //Card HTML
-
-// Create a function that generates an HTML card for Intern
-    //Card HTML
-
-
-
-module.exports = teamHTML;
+module.exports = teamHTML
