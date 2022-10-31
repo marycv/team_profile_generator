@@ -49,7 +49,7 @@ async function manager() {
     // ADD newManager to employeeList array
     employeeList.push(newManager);
     
-    console.log(employeeList);
+    // console.log(employeeList);
 
     employee();
 }
@@ -86,7 +86,7 @@ async function engineer() {
     //ADD newEngineer to employeeList array
     employeeList.push(newEngineer);
 
-    console.log(employeeList);
+    // console.log(employeeList);
     employee();
 }
     
@@ -122,7 +122,7 @@ async function intern() {
     //ADD newIntern to employeeList array
     employeeList.push(newIntern);
 
-    console.log(employeeList);
+    // console.log(employeeList);
     employee();
 }
    
@@ -148,21 +148,21 @@ async function employee() {
     } else if(answers.teamMember === "Intern") {
         intern();
     } else {
-        
-        // try {
-        //     // Generate the HTML and write it to a file
-        //     const pageTemplate = teamHTML(employeeList);
+        try {
+            // Generate the HTML and write it to a file
+            const pageTemplate = teamHTML(employeeList);
 
-        //     await writeFile("team.html", pageTemplate);
-        //     console.log("Success!");
-        // } catch(err) {
-        //     console.error(err)
-        // }
-    }
-}
+            await writeFile("team.html", pageTemplate);
+            console.log("Success!");
+        } catch(err) {
+            console.error(err)
+        }
+    };
+};
 
 
 manager();
+
 
 
 
