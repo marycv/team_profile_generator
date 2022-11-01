@@ -16,6 +16,18 @@ const employeesByRole = (employeeList) => {
       internList.push(element)
     }
   });
+  console.log(managerList);
+};
+
+// Create a function to pull the employee detail (office number, Github, or school)
+const employeeDetail = (data) => {
+  if (data.officeNumber) {
+    return `Office Number: ${data.officeNumber}`
+  } else if (data.github) {
+    return `Github: <a href="https://github.com/${data.github}">${data.github}</a>`
+  } else {
+    return `University: ${data.school}`
+  }  
 };
 
 // Create a function to make the card HTML
@@ -23,19 +35,12 @@ const makeCard = (data) => {
   return `
     <div class="card col-md-3 m-2 bg-white text-black">
         <div class="card-body">
-            <h3 class="card-title py-2">${data.name}</h3>
+            <h2 class="card-title py-2">${data.name}</h2>
+            <h3 class="role py-2">${data.getRole()}</h3>
             <ul class="list-group">
-                <li class="list-group-item">ID-${data.id}</li>
-                <li class="list-group-item">${data.email}</li>
-                <li class="list-group-item">${() => {
-                    if (data.officeNumber) {
-                        return data.officeNumber
-                    } else if (data.github) {
-                        return data.github
-                    } else {
-                        return data.school
-                    }
-                }}
+                <li class="list-group-item">ID: ${data.id}</li>
+                <li class="list-group-item">Email: <a href="mailto:${data.email}">${data.email}</a></li>
+                <li class="list-group-item">${employeeDetail(data)}
                 </li>
             </ul>
         </div>

@@ -35,7 +35,7 @@ async function engineer() {
     // inquirer.prompt()
     const answers = await inquirer.prompt(questions.engineer)
     // THEN Build an Engineer object and PUSH to employeeList array
-    employeeList.push(new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.github););
+    employeeList.push(new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.github));
 
     employee();
 }
